@@ -133,6 +133,7 @@ function Login() {
             className="text-white bg-blue-600 mt-12 rounded-lg w-24 h-10 ml-2"
             // onClick={send}
           >
+            <Link to="/HODDashboard">Login</Link>
             Login
           </button>
         </div>

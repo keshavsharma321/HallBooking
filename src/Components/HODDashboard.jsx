@@ -20,10 +20,7 @@ function HODDashboard(){
             "url('https://images.unsplash.com/photo-1566596343373-30675086c273?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fGhhbGwlMjBib29raW5nfGVufDB8fDB8fHww')",
         }}
       >
-        <div className='' >
-            
-             </div>
-        <div className='text-white text-center '></div>
+       
       </div>
       
       
