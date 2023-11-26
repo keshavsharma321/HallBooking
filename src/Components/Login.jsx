@@ -1,61 +1,80 @@
 import React, { useState } from "react";
-
+import { Link } from "react-router-dom";
 import axios from "axios";
+// import customRequest from "./customrequest";
 
 function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  const customRequest = axios.create({
-    baseURL: "http://10.21.80.69:8000",
-    headers: { "Request-Origin": "website" },
-  });
+ 
 
   function send() {
     console.log(username, password);
-    if (username == null || password == null) {
-      alert("Please enter valid details");
-    } else {
-      customRequest
-        .post("/account/api/login_token/", {
-          username: username,
-          password: password,
+    axios.post('http://10.21.80.69:8000/account/api/login_token/', {
+          username: username ,
+          password: password
         })
         .then((response) => {
-          const access = response.data.access;
-          const refresh = response.data.refresh;
-          localStorage.setItem("accessToken", access);
-          localStorage.setItem("refreshToken", refresh);
+          console.log(response);
+          console.log(response.data);
+          console.log(response.data.accessToken);
+          localStorage.setItem('Access Token' , response.data)
+          if( response.data === 'AO'
+          ){ <Redirect to="/AODashboard"/> }else if(response.data==='HOD')
+          { <Redirect to="/HODDashboard"/> }else{<Redirect to="/Employ"/>}
+    
+          var Token = localStorage.getItem('Access Token');
+        }, (error) => {
+          console.log(error);
         });
-    }
+
+
+
+
+    // if (username == null || password == null) {
+    //   alert("Please enter valid details");
+    // } else {
+    //   customRequest
+    //     .post("/account/api/login_token/", {
+    //       username: username,
+    //       password: password,
+    //     })
+    //     .then((response) => {
+    //       const access = response.data.access;
+    //       const refresh = response.data.refresh;
+    //       localStorage.setItem("accessToken", access);
+    //       localStorage.setItem("refreshToken", refresh);
+    //     });
+    // }
   }
 
-  customRequest.interceptors.response.use(
-    (response) => response,
-    async (error) => {
-      const { response, config } = error;
-      if (response.status === 401) {
-        let refreshToken = localStorage.getItem("refreshToken");
-        if (refreshToken) {
-          try {
-            const data = await customRequest.post("/token/refresh/", {
-              refresh: refreshToken,
-            });
-            let accessToken = data.data.accessToken;
-            if (accessToken) {
-              localStorage.setItem("token", accessToken);
-              config.headers["Authorization"] = accessToken;
-              return customRequest(config);
-            }
-          } catch (e) {
-            console.log(e);
-          }
-        }
-      }
+  // customRequest.interceptors.response.use(
+  //   (response) => response,
+  //   async (error) => {
+  //     const { response, config } = error;
+  //     if (response.status === 401) {
+  //       let refreshToken = localStorage.getItem("refreshToken");
+  //       if (refreshToken) {
+  //         try {
+  //           const data = await customRequest.post("/token/refresh/", {
+  //             refresh: refreshToken,
+  //           });
+  //           let accessToken = data.data.accessToken;
+  //           if (accessToken) {
+  //             localStorage.setItem("token", accessToken);
+  //             config.headers["Authorization"] = accessToken;
+  //             return customRequest(config);
+  //           }
+  //         } catch (error) {
+  //           console.log(error);
+  //         }
+  //       }
+  //     }
 
-      return error;
-    }
-  );
+  //     return error;
+  //   }
+  // );
 
   //   axios.post('http://10.21.80.69:8000/account/api/login_token/', {
   //     username: username ,
@@ -76,13 +95,14 @@ function Login() {
   //   });
   // }}
   return (
+    <div className="bg-blue-100 grid h-screen">
     <div className="">
       <br></br>
       <br></br>
       <h1 className="text-4xl text-blue-500 text-center">The Organizers</h1>
       <br></br>
       <br></br>
-      <div className="flex  border-2 border-blue-300 w-9/12 ml-40	rounded-lg">
+      <div className="flex bg-white  border-4 border-blue-300 w-9/12 ml-40	rounded-lg">
         <div className="bg-white">
           <img
             className="h-96 w-96 ml-8"
@@ -94,7 +114,7 @@ function Login() {
           <br></br>
           Login<br></br>
           <br></br>
-          Username :{" "}
+          Username :
           <input
             className="border-2 border-blue-300 rounded-lg w-64"
             value={username}
@@ -102,21 +122,22 @@ function Login() {
           ></input>
           <br></br>
           <br></br>
-          Password :{" "}
+          Password :
           <input
             value={password}
             className="border-2 border-blue-300 rounded-lg w-64 "
             onChange={(e) => setPassword(e.target.value)}
-          ></input><br>
-          </br>
+          ></input>
+          <br></br>
           <button
             className="text-white bg-blue-600 mt-12 rounded-lg w-24 h-10 ml-2"
-            onClick={send}
+            // onClick={send}
           >
             Login
           </button>
         </div>
       </div>
+    </div>
     </div>
   );
 }

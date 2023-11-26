@@ -1,6 +1,34 @@
-import React from "react";
+import React, { useState } from "react";
 
 function Employ() {
+  const [FromDate , setFromDate] = useState("");
+  const [FromTime , setFromTime] = useState("");
+  const [ToDate , setToDate] = useState("");
+  const [ToTime , setToTime] = useState("");
+  const [Participants , setParticipants] = useState("");
+  const [HallName , setHallName] = useState("");
+  const [ Purpose , setPurpose] = useState("");
+  const [Remark , setRemark] = useState("");
+
+  function send(){
+    axios.post('url for hall booking',{
+     FromDate : FromDate,
+     FromTime : FromTime,
+     Todate : ToDate,
+     ToTime : ToTime,
+     Participants:Participants,
+     HallName : HallName,
+     Purpose : Purpose,
+     Remark : Remark,
+    })
+    .then((response)=>{
+      console.log(response)
+    })
+    .catch((error)=>{
+      console.log(error)
+    })
+  }
+
   return (
     <>
       <div
@@ -10,31 +38,31 @@ function Employ() {
             "url('https://images.unsplash.com/photo-1566596343373-30675086c273?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fGhhbGwlMjBib29raW5nfGVufDB8fDB8fHww')",
         }}
       >
-       <div className=' text-center text-black bg-white h-4/5 w-4/5 opacity-50 ml-32'>
-            <br></br>
+       <div className=' text-center text-black bg-white h-4/5 w-4/5 opacity-50 ml-32 mt-16'>
+            <br></br><br></br>
             <h1 className='text-3xl'>Hall Booking Form</h1>
             <br></br><br></br>
-            <div className='flex ml-40'>
-                <label>From</label>
-                <div><label className='text-xl'>Date :</label><input type='date' className='border-2 border-black rounded' value={FromDate} onChange ={(e)=> setFromDate(e.target.value)}></input></div>
-                <div><label className='text-xl'>Time :</label><input type='time' className='border-2 border-black rounded' value={FromTime} onChange ={(e)=> setFromTime(e.target.value)}></input></div>
-                <label>To</label>
-                <div className='ml-28'><label className='text-xl'>Date :</label><input className='border-2 border-black rounded' value={ToDate} onChange={(e)=>setToDate(e.target.value)}></input></div>
-                <div className='ml-28'><label className='text-xl'>Time :</label><input className='border-2 border-black rounded' value={ToTime} onChange={(e)=>setToTime(e.target.value)}></input></div>
-            </div><br></br>
-            <div className='flex ml-32'>
+            <div className='flex ml-24'>
+                
+                <div><label className='text-xl'>From Date :</label><input type='date' className='border-2 border-black rounded' value={FromDate} onChange ={(e)=> setFromDate(e.target.value)}></input></div>
+                <div><label className='text-xl'>From Time :</label><input type='time' className='border-2 border-black rounded' value={FromTime} onChange ={(e)=> setFromTime(e.target.value)}></input></div>
+                
+                <div><label className='text-xl ml-24'>To Date :</label><input type='date' className='border-2 border-black rounded' value={FromDate} onChange ={(e)=> setFromDate(e.target.value)}></input></div>
+                <div><label className='text-xl'>To Time :</label><input type='time' className='border-2 border-black rounded' value={FromTime} onChange ={(e)=> setFromTime(e.target.value)}></input></div>
+            </div><br></br><br></br><br></br>
+            <div className='flex ml-24'>
                 <div><label className='text-xl'> Participants Count :</label><input type='number' className='border-2 border-black rounded' value={Participants} onChange={(e)=>setParticipants(e.target.value)}></input></div>
-                <div className='ml-32'><label className='text-xl'>Hall Name :</label><select className='border-2 border-black rounded' value={HallName} onChange={(e)=>setHallName(e.target.value)}>
+                <div className='ml-28'><label className='text-xl'>Hall Name :</label><select className='border-2 border-black rounded w-60 h-8' value={HallName} onChange={(e)=>setHallName(e.target.value)}>
                   <option>Nehru</option>
                   <option>Shashtri</option>
                   <option>Tagore</option>
                   <option>Gandhi</option>
                   </select></div>
             </div>
-            <br></br>
-            <div className='flex ml-32'>
-                <div><label className='text-xl'> Purpose :</label><input type='text' required className='border-2 border-black rounded' value={Purpose} onChange={(e)=>setPurpose(e.target.value)}></input></div>
-                <div className='ml-32'><label className='text-xl'>Hall Name :</label><input className='border-2 border-black rounded' value={HallName} onChange={(e)=>setHallName(e.target.value)}>
+            <br></br><br></br><br></br>
+            <div className='flex ml-24'>
+                <div><label className='text-xl'>Booking Purpose :</label><input  type='text' required className='border-2 border-black rounded' value={Purpose} onChange={(e)=>setPurpose(e.target.value)}></input></div>
+                <div className='ml-32'><label className='text-xl'>Remarks :</label><input className='border-2 border-black rounded w-64' value={Remark} onChange={(e)=>setRemark(e.target.value)}>
                   </input></div>
             </div>
             <br></br><br></br>
