@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import customRequest from "./customrequest";
 
 function Employ() {
   const [FromDate , setFromDate] = useState("");
@@ -10,23 +11,21 @@ function Employ() {
   const [ Purpose , setPurpose] = useState("");
   const [Remark , setRemark] = useState("");
 
-  function send(){
-    axios.post('url for hall booking',{
-     FromDate : FromDate,
-     FromTime : FromTime,
-     Todate : ToDate,
-     ToTime : ToTime,
-     Participants:Participants,
-     HallName : HallName,
-     Purpose : Purpose,
-     Remark : Remark,
-    })
-    .then((response)=>{
-      console.log(response)
-    })
-    .catch((error)=>{
-      console.log(error)
-    })
+  async function send() {
+    console.log();
+
+    try {
+     
+      const response = await customRequest.post('/account/api/', {
+        
+      });
+
+      console.log(response);
+      
+    } catch (error) {
+      console.log(error);
+     
+    }
   }
 
   return (
