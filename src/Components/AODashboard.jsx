@@ -7,19 +7,23 @@ function AODashboard() {
   const [Occupancy, setOccupancy] = useState('');
   const [DaysLimit, setDaysLimit] = useState('');
 
-  async function send() {
+   function send() {
     console.log(Name, Description, Occupancy, DaysLimit);
 
     try {
      
-      const response = await customRequest.post('/account/api/', {
+      const response = customRequest.post('http://10.21.80.52:8000/api/add/', {
         name: Name,
-        Description: Description,
-        Occupancy: Occupancy,
-        DaysLimit: DaysLimit,
+        description: Description,
+        eligible_occupancy: Occupancy,
+        booking_days_limit: DaysLimit,
       });
 
       console.log(response);
+      Name="";
+      Description="";
+      Occupancy="";
+      DaysLimit="";
       
     } catch (error) {
       console.log(error);
@@ -87,7 +91,12 @@ function AODashboard() {
           <br></br>
           <br></br>
           <br></br>
-          <br></br>
+          <div className='ml-32'>
+           <label className='text-xl'>Add Image</label>
+           <input
+           className='border-2 border-black rounded' type='file'
+           ></input>
+          </div>
           <div>
             <button
               onClick={send}

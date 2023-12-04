@@ -12,7 +12,7 @@ function AOBookings() {
   async function fetchData() {
     try {
       const response = await customRequest.get(
-        "http://10.21.83.191:8000/api/aobookings/"
+        "http://10.21.80.52:8000/api/aobookings/"
       );
 
       console.log(response.data);

@@ -12,7 +12,7 @@ function EmployBookings() {
   async function fetchData() {
     try {
       const response = await customRequest.get(
-        "http://10.21.83.191:8000/api/employbookings/"
+        "http://10.21.80.52:8000/api/booking/"
       );
 
       console.log(response.data);
@@ -20,7 +20,7 @@ function EmployBookings() {
       setData(response.data);
     } catch (error) {
       console.log(error);
-    }
+    };
   }
 
   return (
@@ -50,8 +50,8 @@ function EmployBookings() {
               {/* <th scope="col" className="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">HodApproval</th> */}
               {/* <th scope="col" className="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">HodRemark</th> */}
               <th scope="col" className="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Employe Remark</th>
-              <th scope="col" className="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">HoD Status Date</th>
-              <th scope="col" className="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Submit Date</th>
+              {/* <th scope="col" className="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">HoD Status Date</th> */}
+              {/* <th scope="col" className="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Submit Date</th> */}
               {/* <th scope="col" className="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Employee Details</th> */}
             </tr>
           </thead>
@@ -67,8 +67,8 @@ function EmployBookings() {
                             {/* <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-gray-200">{user.hod_approval_status}</td> */}
                             {/* <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-gray-200">{user.hod_remark}</td> */}
                             <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-gray-200">{user.employee_remark}</td>
-                            <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-gray-200">{user.hod_status_date}</td>
-                            <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-gray-200">{user.submit_date}</td>
+                            {/* <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-gray-200">{user.hod_status_date}</td> */}
+                            {/* <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-gray-200">{user.submit_date}</td> */}
                             {/* <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-gray-200">{user.employee_details}</td> */}
             </tr> 
           })}

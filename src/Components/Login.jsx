@@ -12,7 +12,7 @@ function Login() {
   async function send() {
     try {
       const response = await axios.post(
-        "http://10.21.83.191:8000/account/api/login_token/",
+        "http://10.21.80.52:8000/account/api/login_token/",
         {
           username: username,
           password: password,
@@ -25,7 +25,7 @@ function Login() {
       console.log(response.data.refresh)
       localStorage.setItem("refresh", refresh);
       navigate("/Commen");
-      const keshav = await customRequest.get('http://10.21.83.191:8000/api/home/', {
+      const keshav = await customRequest.get('http://10.21.80.52:8000/api/home/', {
       //  headers : {access}
       });
 

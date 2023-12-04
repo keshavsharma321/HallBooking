@@ -12,7 +12,7 @@ function Commen() {
   async function fetchData() {
     try {
       const response = await customRequest.get(
-        "http://10.21.83.191:8000/api/home/"
+        "http://10.21.80.52:8000/api/home/"
       );
 
       console.log(response.data);
@@ -21,7 +21,15 @@ function Commen() {
     } catch (error) {
       console.log(error);
     }
-  }
+  };
+
+  async function logout(){
+    try{
+     const info = await customRequest.post("http://10.21.80.52:8000/api/logout/",{});
+    } catch (error) {
+     console.log(error);
+   }
+   }
 
   return (
     <>
@@ -34,9 +42,9 @@ function Commen() {
       >
         <div className="h-24 bg-white opacity-40"><br></br>
             {data.map((user, index)=>{
-                return<label className="text-black ml-40 text-3xl cursor-pointer "  key={index}><Link to={user.route}>{user.field}</Link>  </label>
+                return<label className="text-black ml-40 text-3xl cursor-pointer "  key={index}><Link to={user.route}>{user.field}</Link></label>
             })}
-            <button className="text-white ml-36 bg-black h-8 rounded-md w-16 ">Logout</button>
+            <button className="text-white ml-36 bg-black h-8 rounded-md w-16 " onClick={logout}>Logout</button>
         </div>
       </div>
     </>
