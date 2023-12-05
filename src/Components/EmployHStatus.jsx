@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import customRequest from "./customrequest";
+
 // import { Link } from "react-router-dom";
 
 
@@ -12,7 +13,7 @@ function EmployBookings() {
   async function fetchData() {
     try {
       const response = await customRequest.get(
-        "http://10.21.80.52:8000/api/booking/"
+        "http://10.21.85.94:8000/api/booking/"
       );
 
       console.log(response.data);
@@ -58,18 +59,18 @@ function EmployBookings() {
           <tbody>{
                     data.map((user,index)=>{
                         return <tr key={index} className="odd:bg-white even:bg-gray-100 hover:bg-gray-100 dark:odd:bg-gray-800 dark:even:bg-gray-700 dark:hover:bg-gray-700">
-                            {/* <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-gray-200">{user.employee}</td> */}
-                            <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-gray-200">{user.from_date}</td>
-                            <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-gray-200">{user.to_date}</td>
-                            <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-gray-200">{user.participants_count}</td>
-                            <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-gray-200">{user.hall}</td>
-                            <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-gray-200">{user.purpose}</td>
-                            {/* <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-gray-200">{user.hod_approval_status}</td> */}
-                            {/* <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-gray-200">{user.hod_remark}</td> */}
-                            <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-gray-200">{user.employee_remark}</td>
-                            {/* <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-gray-200">{user.hod_status_date}</td> */}
-                            {/* <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-gray-200">{user.submit_date}</td> */}
-                            {/* <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-gray-200">{user.employee_details}</td> */}
+                            {/* <td className="px-6 py-4 whitespace-nowrap text-xs font-medium text-gray-800 dark:text-gray-200">{user.employee}</td> */}
+                            <td className="px-6 py-4 whitespace-nowrap text-xs font-medium text-gray-800 dark:text-gray-200">{user.from_date}</td>
+                            <td className="px-6 py-4 whitespace-nowrap text-xs font-medium text-gray-800 dark:text-gray-200">{user.to_date}</td>
+                            <td className="px-6 py-4 whitespace-nowrap text-xs font-medium text-gray-800 dark:text-gray-200">{user.participants_count}</td>
+                            <td className="px-6 py-4 whitespace-nowrap text-xs font-medium text-gray-800 dark:text-gray-200">{user.hall}</td>
+                            <td className="px-6 py-4 whitespace-nowrap text-xs font-medium text-gray-800 dark:text-gray-200">{user.purpose}</td>
+                            {/* <td className="px-6 py-4 whitespace-nowrap text-xs font-medium text-gray-800 dark:text-gray-200">{user.hod_approval_status}</td> */}
+                            {/* <td className="px-6 py-4 whitespace-nowrap text-xs font-medium text-gray-800 dark:text-gray-200">{user.hod_remark}</td> */}
+                            <td className="px-6 py-4 whitespace-nowrap text-xs font-medium text-gray-800 dark:text-gray-200">{user.employee_remark}</td>
+                            {/* <td className="px-6 py-4 whitespace-nowrap text-xs font-medium text-gray-800 dark:text-gray-200">{user.hod_status_date}</td> */}
+                            {/* <td className="px-6 py-4 whitespace-nowrap text-xs font-medium text-gray-800 dark:text-gray-200">{user.submit_date}</td> */}
+                            {/* <td className="px-6 py-4 whitespace-nowrap text-xs font-medium text-gray-800 dark:text-gray-200">{user.employee_details}</td> */}
             </tr> 
           })}
           </tbody>

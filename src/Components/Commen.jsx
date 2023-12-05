@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import customRequest from "./customrequest";
-import { Link } from "react-router-dom";
+import { Link , useNavigate } from "react-router-dom";
 
 
 function Commen() {
   const [data , setData] = useState([])
+  const navigate = useNavigate();
   useEffect(() => {
     fetchData();
   }, []);
@@ -12,7 +13,7 @@ function Commen() {
   async function fetchData() {
     try {
       const response = await customRequest.get(
-        "http://10.21.80.52:8000/api/home/"
+        "http://10.21.85.94:8000/api/home/"
       );
 
       console.log(response.data);
@@ -23,13 +24,20 @@ function Commen() {
     }
   };
 
-  async function logout(){
-    try{
-     const info = await customRequest.post("http://10.21.80.52:8000/api/logout/",{});
+  function logout() {
+    try {
+      const log =  customRequest.post(
+        "http://10.21.85.94:8000/account/api/logout/"
+      );
+     console.log(log.data);
+     if(log.data==="Success"){
+        console.log(log.data);
+          navigate("/Login");
+         }
     } catch (error) {
-     console.log(error);
-   }
-   }
+      console.log(error);
+    }
+  };
 
   return (
     <>

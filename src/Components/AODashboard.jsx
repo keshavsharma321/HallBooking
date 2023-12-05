@@ -6,13 +6,14 @@ function AODashboard() {
   const [Description, setDescription] = useState('');
   const [Occupancy, setOccupancy] = useState('');
   const [DaysLimit, setDaysLimit] = useState('');
+  const [Images, setImages] = useState('');
 
    function send() {
-    console.log(Name, Description, Occupancy, DaysLimit);
+    console.log(Name, Description, Occupancy, DaysLimit , Images);
 
     try {
      
-      const response = customRequest.post('http://10.21.80.52:8000/api/add/', {
+      const response = customRequest.post('http://10.21.85.94:8000/api/add/', {
         name: Name,
         description: Description,
         eligible_occupancy: Occupancy,
@@ -30,6 +31,10 @@ function AODashboard() {
      
     }
   }
+
+  // function setImages(event){
+
+  // }
 
   return (
     <>
@@ -91,7 +96,7 @@ function AODashboard() {
           <br></br>
           <br></br>
           <br></br>
-          <div className='ml-32'>
+          <div className='ml-32' onChange={(event)=> setImages(event)}>
            <label className='text-xl'>Add Image</label>
            <input
            className='border-2 border-black rounded' type='file'

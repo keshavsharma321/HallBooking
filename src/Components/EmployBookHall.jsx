@@ -10,7 +10,7 @@ function Employ() {
   async function fetchData() {
     try {
       const response = await customRequest.get(
-        "http://10.21.80.52:8000/api/options/"
+        "http://10.21.85.94:8000/api/options/"
       );
 
       console.log(response.data);
@@ -34,7 +34,7 @@ function Employ() {
     console.log();
     try {
       const response = await customRequest.post(
-        "http://10.21.80.52:8000/api/booking/",
+        "http://10.21.85.94:8000/api/booking/",
         {
           from_date: FromDate,
           from_time: FromTime,
