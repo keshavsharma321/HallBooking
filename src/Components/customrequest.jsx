@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const customRequest = axios.create({
-  baseURL: "http://10.21.85.94:8000",
+  baseURL: "http://10.21.81.155:8000",
 });
 
 customRequest.interceptors.request.use(
@@ -24,7 +24,7 @@ customRequest.interceptors.response.use(
       const refreshToken = localStorage.getItem("Refresh Token");
       if (refreshToken) {
         try {
-          const refreshResponse = await customRequest.post("http://10.21.85.94:8000/account/api/token/refresh/", {
+          const refreshResponse = await customRequest.post("/account/api/token/refresh/", {
             refresh: refreshToken,
           });
           const newAccessToken = refreshResponse.data.access;

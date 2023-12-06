@@ -12,7 +12,7 @@ function HodBookings() {
   async function fetchData() {
     try {
       const response = await customRequest.get(
-        "http://10.21.85.94:8000/api/hodbookings/"
+        "/api/hodbookings/"
       );
 
       console.log(response.data);

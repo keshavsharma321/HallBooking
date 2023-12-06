@@ -3,7 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import customRequest from "./customrequest";
 
-// const navigate = useNavigate();
+
 function Login() {
   const navigate = useNavigate();
   const [username, setUsername] = useState("");
@@ -11,8 +11,8 @@ function Login() {
 
   async function send() {
     try {
-      const response = await axios.post(
-        "http://10.21.85.94:8000/account/api/login_token/",
+      const response = await customRequest.post(
+        "/account/api/login_token/",
         {
           username: username,
           password: password,
@@ -25,8 +25,7 @@ function Login() {
       console.log(response.data.refresh)
       localStorage.setItem("refresh", refresh);
       navigate("/Commen");
-      const keshav = await customRequest.get('http://10.21.85.94:8000/api/home/', {
-      //  headers : {access}
+      const keshav = await customRequest.get('/api/home/', {
       });
 
       console.log(keshav);
@@ -58,7 +57,8 @@ function Login() {
         <br></br>
         Username :
         <input
-          className="border-2 border-blue-300 rounded-lg w-64"
+           type="text"
+          className="border-2 border-blue-300 h-10 rounded-lg w-64 text-lg"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
         ></input>
@@ -67,12 +67,13 @@ function Login() {
         Password :
         <input
           value={password}
-          className="border-2 border-blue-300 rounded-lg w-64 "
+          pattern="/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,32}$/"
+          className="border-2 border-blue-300 rounded-lg h-10 w-64 text-lg"
           onChange={(e) => setPassword(e.target.value)}
         ></input>
         <br></br>
         <button
-          className="text-white bg-blue-600 mt-12 rounded-lg w-24 h-10 ml-2"
+          className="text-white bg-blue-600 mt-12 rounded-lg w-24 h-10 ml-2 "
           onClick={send}
         >
           Login

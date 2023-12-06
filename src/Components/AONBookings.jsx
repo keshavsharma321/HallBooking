@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from "react";
 import customRequest from "./customrequest";
-// import { Link } from "react-router-dom";
 
 
 function AONBookings() {
   const [data , setData] = useState([])
   const [remark, setremark] = useState([])
-  // const[id,setid] = useState('')
   useEffect(() => {
     fetchData();
   }, []);
@@ -14,7 +12,7 @@ function AONBookings() {
   async function fetchData() {
     try {
       const response = await customRequest.get(
-        "http://10.21.85.94:8000/api/aobookings/"
+        "/api/aobookings/"
       );
 
       console.log(response.data);
@@ -30,7 +28,7 @@ function AONBookings() {
     console.log(remark)
     try {
       const response =  customRequest.put(
-        "http://10.21.85.94:8000/api/ao/"+id+"/",{ao_approval_status:1, ao_remark:remark}
+        "/api/ao/"+id+"/",{ao_approval_status:1, ao_remark:remark}
       );
     } catch (error) {
       console.log(error);
@@ -41,7 +39,7 @@ function AONBookings() {
     console.log(remark)
     try {
       const response =  customRequest.put(
-        "http://10.21.85.94:8000/api/ao/"+id+"/",{ao_approval_status:0,ao_remark:remark}
+        "/api/ao/"+id+"/",{ao_approval_status:0,ao_remark:remark}
       );
     } catch (error) {
       console.log(error);
@@ -104,9 +102,6 @@ function AONBookings() {
           })}
           </tbody>
         </table>
-        {/* {data.map((user)=>{
-          return setid(user.id)
-        })} */}
       </div>
     </div>
   </div>

@@ -41,7 +41,7 @@ function HodNBookings() {
     console.log(remark)
     try {
       const response =  customRequest.put(
-        "http://10.21.85.94:8000/api/hod/"+id+"/",{ hod_approval_status: 0 , hod_remark:remark }
+        "/api/hod/"+id+"/",{ hod_approval_status: 0 , hod_remark:remark }
       );
     } catch (error) {
       console.log(error);

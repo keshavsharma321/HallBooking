@@ -10,12 +10,13 @@ function Employ() {
   async function fetchData() {
     try {
       const response = await customRequest.get(
-        "http://10.21.85.94:8000/api/options/"
+        "/api/options/"
       );
 
       console.log(response.data);
       const data = response.data;
       setData(response.data);
+
     } catch (error) {
       console.log(error);
     }
@@ -34,7 +35,7 @@ function Employ() {
     console.log();
     try {
       const response = await customRequest.post(
-        "http://10.21.85.94:8000/api/booking/",
+        "/api/booking/",
         {
           from_date: FromDate,
           from_time: FromTime,
@@ -46,8 +47,15 @@ function Employ() {
           employee_remark: Remark,
         }
       );
-
       console.log(response);
+      FromDate = "";
+      FromTime = "";
+      ToDate= "";
+      ToTime = "";
+      Participants= "";
+      HallName="";
+      Purpose="";
+      Remark ="";
     } catch (error) {
       console.log(error);
     }

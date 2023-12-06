@@ -5,7 +5,7 @@ function Profile() {
   useEffect(() => { fetchProfile();[]})
   async function fetchProfile(){
    try{
-    const info = await customRequest.get("http://10.21.80.52:8000/api/add/",{});
+    const info = await customRequest.get("/api/add/",{});
     console.log(info.data);
     const profile = info.data;
     setProfile(info.data)
