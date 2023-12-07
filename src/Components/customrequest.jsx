@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const customRequest = axios.create({
-  baseURL: "http://10.21.81.155:8000",
+  baseURL: "http://10.21.87.160:8000",
 });
 
 customRequest.interceptors.request.use(
@@ -21,7 +21,7 @@ customRequest.interceptors.response.use(
   async (error) => {
     const { response, config } = error;
     if (response && response.status === 401) {
-      const refreshToken = localStorage.getItem("Refresh Token");
+      const refreshToken = localStorage.getItem("refresh");
       if (refreshToken) {
         try {
           const refreshResponse = await customRequest.post("/account/api/token/refresh/", {
@@ -29,8 +29,9 @@ customRequest.interceptors.response.use(
           });
           const newAccessToken = refreshResponse.data.access;
           const newRefreshToken = refreshResponse.data.refresh;
-          localStorage.setItem("Access Token", newAccessToken);
-          localStorage.setItem("Refresh Token", newRefreshToken);
+          localStorage.setItem("access", newAccessToken);
+          localStorage.setItem("refresh", newRefreshToken);
+          const token = localStorage.getItem("access")
           const auth = token ? `Bearer ${token}` : '';
           config.headers['Authorization'] = auth;
           return customRequest(config);

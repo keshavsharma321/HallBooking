@@ -11,6 +11,7 @@ import HodNBookings from './Components/HodNBookings';
 import EmployBookings from './Components/EmployHStatus';
 import Employ from './Components/EmployBookHall';
 import Profile from './Components/EmployProfile';
+import Update from './Components/AOHupdate';
 
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
           <Route path='/HodNBookings' element={<HodNBookings/>}></Route>
           <Route path='/EmployHStatus' element={<EmployBookings/>}></Route>
           <Route path="/EmployProfile" element={<Profile/>}></Route>
+          <Route path="/AOHupdate" element={<Update/>}></Route>
         </Routes>
         
   )

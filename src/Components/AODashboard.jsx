@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import customRequest from "./customrequest";
+import { Link } from "react-router-dom";
 
 function AODashboard() {
   const [Name, setName] = useState("");
@@ -105,7 +106,7 @@ function AODashboard() {
           <br></br>
           <br></br>
           <div className="ml-30">
-            <label className="text-xl">Add Images</label>
+            <label className="text-xl">Add Images :</label>
             <input
               className="border-2 border-black rounded"
               type="file"
@@ -122,6 +123,7 @@ function AODashboard() {
             >
               Submit
             </button>
+            <div className="mt-2">You want to update Hall : <Link to="/AOHupdate">Update</Link></div>
           </div>
         </div>
       </div>

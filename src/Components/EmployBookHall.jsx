@@ -48,14 +48,7 @@ function Employ() {
         }
       );
       console.log(response);
-      FromDate = "";
-      FromTime = "";
-      ToDate= "";
-      ToTime = "";
-      Participants= "";
-      HallName="";
-      Purpose="";
-      Remark ="";
+      setFromDate('');
     } catch (error) {
       console.log(error);
     }
